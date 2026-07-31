@@ -1,9 +1,9 @@
 """Cryptarithmetic puzzle.
 
-First attempt to solve equation CP + IS + FUN = TRUE
+First attempt to solve equation BASE + BALL = GAMES
 where each letter represents a unique digit.
 
-This problem has 72 different solutions in base 10.
+This problem has only 1  solutions in base 10.
 """
 from xml.parsers.expat import model
 
@@ -32,7 +32,7 @@ class VarArraySolutionPrinter(cp_model.CpSolverSolutionCallback):
 
 
 def main() -> None:
-    """solve the CP+IS+FUN==TRUE cryptarithm."""
+    """solve the BASE+BALL = GAMES cryptarithm."""
     # Constraint programming engine
     model = cp_model.CpModel()
 
@@ -56,7 +56,7 @@ def main() -> None:
     # Define constraints.
     model.add_all_different(letters)
 
-    # CP + IS + FUN = TRUE
+    # BASE + BALL = GAMES
     model.add(
         b * base * base * base + a * base * base + s * base + e + b * base * base * base + a * base * base + l * base + l 
         == g * base * base * base * base + a * base * base * base + m * base * base + e * base + s
@@ -81,3 +81,16 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+
+"""
+Statistics
+B=7 A=4 S=8 E=3 L=5 G=1 M=9 
+  status   : OPTIMAL
+  conflicts: 52
+  branches : 400
+  wall time: 0.12464230000000001 s
+  sol found: 1
+  
+  """
